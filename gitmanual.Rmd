@@ -1,0 +1,55 @@
+---
+title: "git & Github am ISOE"
+author: "Florian Schneider"
+date: "2025-02-04"
+output: pdf_document
+---
+
+
+## git einrichten
+
+In der ISOE IT-Umgebung ist für alle Nutzer git installiert (lokale Konten und Terminalserver). 
+D.h. man kann git per Kommandozeile nutzen. Dazu navigiert man im Explorer zum gewünschten Arbeitsordner und öffnet Powershell (Explorer Menü: "Datei" > "Windows PowerShell öffnen"). 
+
+Bei erstmaliger Nutzung müssen die Nutzer\*innen-Daten konfiguriert werden. 
+```console
+git config --global user.name "Mona Lisa"
+git config --global user.email monalisa@example.com
+```
+In RStudio kann dafür auch die integrierte Terminalkonsole genutzt werden (im Feld unten links, Tab "Terminal"). 
+
+Von nun an werden alle Aktionen mit git mit diesen Nutzerdaten 'signiert'. 
+Ggf. ist es nötig, die Eintragung auf dem Terminalserver bzw. lokalen System (Laptop, Fat Client) zu wiederholen. Man kann den aktuellen Eintrag auslesen mit:
+```console
+git config --global user.name 
+git config --global user.email
+```
+### Referenzen:
+https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git
+
+## GitHub einrichten
+
+### Github Account anlegen
+
+GitHub ist nach wie vor das gängigste Portal für kollaborative Code-Entwicklung. Ursprünglich war es von Entwickler\*innen für die Förderung von Open Source und Open Science-Projekten sehr geschätzt.  Neben der Kernfunktion als Veröffentlichungsplattform und kollaborative Code-Entwicklung beinhaltet GitHub auch Tools für das Projektmanagement, die Codedokumentation (z.B. per statischer Webseite), sowie Test-Workflows und einen KI-Assistenten für die Programmierung. 
+Eine [Registrierung auf Github](https://github.com/signup?source=form-home-signup&user_email=) ist kostenlos. Der kostenlose Tarif erlaubt unbegrenzte Zahl öffentliche oder private Repositorien und verfügt nur über eine eingeschränkte Rollenverwaltung. Regulär kosten Team-Accounts 4$/Monat, aber das ISOE könnte sich ggf. [als Nonprofit-Organisation akkreditieren lassen](https://github.com/solutions/industry/nonprofits).
+Mit der Übernahme durch Microsoft im Jahr 2018 gab es Kritik aus der OpenSource-Community an der Neuausrichtung auf vorwiegend kommerzielle Entwicklungsprojekte. Alternative Plattformen sind u.a. [GitLab](https://about.gitlab.com/),  [GitKraken](https://www.gitkraken.com/) und [BitBucket](https://bitbucket.org/product).
+
+https://github.com/solutions/industry/nonprofits
+### Organisation anlegen
+Für Projekte oder Institute bietet sich die Einrichtung einer 'Organisation' an. Dies ist auch im kostenlosen Tarif möglich. (im Menü auf '+' und 'New organisation'). 
+Auf der Organisations-Seite in der rechten Spalte können dann Nutzer\*innen hinzugefügt und Rollen vergeben werden ('invite someone'; Alternativ im Menü 'Settings' > 'Organization roles' > 'Role assignments')
+
+https://git-scm.com/book/de/v2/GitHub-Verwalten-einer-Organisation
+https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
+
+### Login
+Der Login erfolgt per 2-Faktor Authentifizierung, d.h. Bestätigung per SMS, Authenticator-App, oder GitHub-App. Bei erster Nutzung sollte die bevorzugte Methode in den [Einstellungen](https://github.com/settings/security?type=app#two-factor-summary) konfiguriert werden. 
+
+### Github als remote-Server einrichten
+
+Voraussetzung für die Synchronisation des lokalen Repositoriums mit Github ist die Einrichtung des 'remote' auf dem lokalen System. Für jedes git-Repository kann ein Adressbuch mit verknüpften Remotes angelegt werden. Ein Eintrag in diesem Adressbuch beschreibt das Repository auf GitHub einschließlich der Art der Verbindung. Der empfohlene Verbindungsmodus ist per HTTPS und 
+
+### Link zu GitHub per HTTPS
+
