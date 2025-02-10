@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 *.pdf
+*.Rproj
+gitmanual.docx
