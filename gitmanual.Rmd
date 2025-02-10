@@ -2,7 +2,9 @@
 title: "git & Github am ISOE"
 author: "Florian Schneider"
 date: "2025-02-04"
-output: pdf_document
+output:
+  word_document: default
+  pdf_document: default
 ---
 
 
@@ -37,7 +39,9 @@ Eine [Registrierung auf Github](https://github.com/signup?source=form-home-signu
 Mit der Übernahme durch Microsoft im Jahr 2018 gab es Kritik aus der OpenSource-Community an der Neuausrichtung auf vorwiegend kommerzielle Entwicklungsprojekte. Alternative Plattformen sind u.a. [GitLab](https://about.gitlab.com/),  [GitKraken](https://www.gitkraken.com/) und [BitBucket](https://bitbucket.org/product).
 
 https://github.com/solutions/industry/nonprofits
+
 ### Organisation anlegen
+
 Für Projekte oder Institute bietet sich die Einrichtung einer 'Organisation' an. Dies ist auch im kostenlosen Tarif möglich. (im Menü auf '+' und 'New organisation'). 
 Auf der Organisations-Seite in der rechten Spalte können dann Nutzer\*innen hinzugefügt und Rollen vergeben werden ('invite someone'; Alternativ im Menü 'Settings' > 'Organization roles' > 'Role assignments')
 
@@ -45,11 +49,29 @@ https://git-scm.com/book/de/v2/GitHub-Verwalten-einer-Organisation
 https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
 
 ### Login
+
 Der Login erfolgt per 2-Faktor Authentifizierung, d.h. Bestätigung per SMS, Authenticator-App, oder GitHub-App. Bei erster Nutzung sollte die bevorzugte Methode in den [Einstellungen](https://github.com/settings/security?type=app#two-factor-summary) konfiguriert werden. 
 
 ### Github als remote-Server einrichten
 
-Voraussetzung für die Synchronisation des lokalen Repositoriums mit Github ist die Einrichtung des 'remote' auf dem lokalen System. Für jedes git-Repository kann ein Adressbuch mit verknüpften Remotes angelegt werden. Ein Eintrag in diesem Adressbuch beschreibt das Repository auf GitHub einschließlich der Art der Verbindung. Der empfohlene Verbindungsmodus ist per HTTPS und 
+Voraussetzung für die Synchronisation des lokalen Repositoriums mit Github ist die Einrichtung des 'Remote'-Repositories im lokalen Repository. Für jedes git-Repository kann ein Adressbuch mit verknüpften Remotes angelegt werden. Ein solcher Eintrag bennent die Adresse des Repository auf GitHub einschließlich des Verbindungsprotokolls. Empfohlen wird hier HTTPS.
 
 ### Link zu GitHub per HTTPS
+HTTPS transferiert Daten verschlüsselt auf Grundlage eines geheimen Schlüssels. Dieser Schlüssel, der Personal Access Token (PAT), wird auf Github generiert (https://github.com/settings/tokens).  Bei der Erzeugung des PAT beschreibt man den Zweck, z.B. 'all ISOE related repos', sowie eine zeitliche Haltbarkeit. Ein zeitlich befristeter PAT ist aus Sicherheitsgründen sehr zu empfehlen (irgendwas zwischen 30 Tage und 6 Monate). Ein abgelaufener PAT kann jederzeit durch wiederholen dieser Prozedur erneuert werden.  
+zuletzt wählt man den 'scope' des Tokens, d.h. die Befugnisse, die mit dem Schlüssel verbunden sind. Auch hier sollte aus sicherheitsgründen lediglich die Standardoperationen für Repositories (scope 'repo') gewählt werden. 
+Anschließend wird der Token einmalig angezeit. Er kann später nicht mehr ausgelesen werden! Es ist sehr wichtig, den PAT nun für die Verwendung im lokalen git zu sichern. 
 
+Dafür nutzen wir das R-package gitcreds (enthalten im package usethis). 
+
+```console
+> install.packages('usethis')
+> gitcreds::gitcreds_set()
+
+? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Anschließend kann sich git ohne weitere Eingabe eines Passworts mit Github verbinden, um das Repository zu synchronisieren. 
+
+weiterführende Links: 
+https://happygitwithr.com/https-pat
+https://happygitwithr.com/rstudio-git-github.html
